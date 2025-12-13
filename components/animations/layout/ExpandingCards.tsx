@@ -39,14 +39,15 @@ export default function ExpandingCards() {
       <div>
         <h3 className="text-xl font-semibold mb-4">Hover Expand</h3>
         <div className="flex gap-4">
-          {[1, 2, 3].map((i) => (
-            <div
-              key={i}
-              className={`flex-1 h-48 bg-gradient-to-br from-pink-${i * 100 + 400} to-red-${i * 100 + 400} rounded-lg transition-all duration-300 hover:flex-[2] cursor-pointer flex items-center justify-center text-white text-2xl font-bold`}
-            >
-              {i}
-            </div>
-          ))}
+          <div className="flex-1 h-48 bg-gradient-to-br from-pink-500 to-red-500 rounded-lg transition-all duration-300 hover:flex-[2] cursor-pointer flex items-center justify-center text-white text-2xl font-bold">
+            1
+          </div>
+          <div className="flex-1 h-48 bg-gradient-to-br from-pink-600 to-red-600 rounded-lg transition-all duration-300 hover:flex-[2] cursor-pointer flex items-center justify-center text-white text-2xl font-bold">
+            2
+          </div>
+          <div className="flex-1 h-48 bg-gradient-to-br from-pink-700 to-red-700 rounded-lg transition-all duration-300 hover:flex-[2] cursor-pointer flex items-center justify-center text-white text-2xl font-bold">
+            3
+          </div>
         </div>
       </div>
 

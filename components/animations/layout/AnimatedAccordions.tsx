@@ -63,12 +63,12 @@ export default function AnimatedAccordions() {
         <div className="space-y-2">
           {items.map((item, index) => {
             const isOpen = openItems.has(item.id);
-            const colors = ['blue', 'green', 'purple'];
-            const color = colors[index];
+            const bgColors = ['bg-blue-500', 'bg-green-500', 'bg-purple-500'];
+            const bgColor = bgColors[index];
             return (
               <div
                 key={`color-${item.id}`}
-                className={`bg-${color}-500 text-white rounded-lg overflow-hidden transition-all duration-300 ${
+                className={`${bgColor} text-white rounded-lg overflow-hidden transition-all duration-300 ${
                   isOpen ? 'shadow-lg' : ''
                 }`}
               >
