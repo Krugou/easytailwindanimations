@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --animation-speed: 1;
+  }
+
+  * {
+    animation-duration: calc(var(--animation-duration, 1s) / var(--animation-speed));
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer utilities {
+  .animation-speed-slow {
+    --animation-speed: 0.5;
+  }
+
+  .animation-speed-normal {
+    --animation-speed: 1;
+  }
+
+  .animation-speed-fast {
+    --animation-speed: 2;
+  }
+
+  .no-animations * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
