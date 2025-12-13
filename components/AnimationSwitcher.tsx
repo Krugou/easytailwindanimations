@@ -16,14 +16,14 @@ interface AnimationSwitcherProps {
   onCategoryChange: (category: AnimationCategory) => void;
 }
 
-const categories = [
-  { id: 'all' as AnimationCategory, label: 'All' },
-  { id: 'basics' as AnimationCategory, label: 'Basics' },
-  { id: 'text' as AnimationCategory, label: 'Text' },
-  { id: 'scroll' as AnimationCategory, label: 'Scroll' },
-  { id: 'loaders' as AnimationCategory, label: 'Loaders' },
-  { id: 'layout' as AnimationCategory, label: 'Layout' },
-  { id: 'wild' as AnimationCategory, label: 'Wild' },
+const categories: { id: AnimationCategory; label: string }[] = [
+  { id: 'all', label: 'All' },
+  { id: 'basics', label: 'Basics' },
+  { id: 'text', label: 'Text' },
+  { id: 'scroll', label: 'Scroll' },
+  { id: 'loaders', label: 'Loaders' },
+  { id: 'layout', label: 'Layout' },
+  { id: 'wild', label: 'Wild' },
 ];
 
 const AnimationSwitcher = ({ activeCategory, onCategoryChange }: AnimationSwitcherProps) => {

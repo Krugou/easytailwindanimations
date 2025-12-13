@@ -20,7 +20,7 @@ const ScrambleText = () => {
       setDisplayText(() =>
         originalText
           .split('')
-          .map((_char, index) => {
+          .map((_, index) => {
             if (index < iterations / 2) {
               return originalText[index];
             }
