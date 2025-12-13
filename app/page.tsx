@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { AnimationProvider } from '@/utils/AnimationContext';
+import { AnimationProvider, useAnimation } from '@/utils/AnimationContext';
 import AnimationSwitcher, { AnimationCategory } from '@/components/AnimationSwitcher';
 
 // Basics
@@ -43,8 +43,14 @@ import CursorEffects from '@/components/animations/wild/CursorEffects';
 import PhysicsAnimations from '@/components/animations/wild/PhysicsAnimations';
 import ChaosMode from '@/components/animations/wild/ChaosMode';
 
-const Home = () => {
+// GSAP
+import GsapBasics from '@/components/animations/gsap/GsapBasics';
+import GsapScrollTrigger from '@/components/animations/gsap/GsapScrollTrigger';
+import GsapTimeline from '@/components/animations/gsap/GsapTimeline';
+
+const HomeContent = () => {
   const [activeCategory, setActiveCategory] = useState<AnimationCategory>('all');
+  const { gsapEnabled } = useAnimation();
 
   const renderAnimations = () => {
     const sections = [];
@@ -262,38 +268,71 @@ const Home = () => {
       );
     }
 
+    // Only show GSAP examples when GSAP is enabled
+    if (gsapEnabled) {
+      sections.push(
+        <section key="gsap" className="space-y-16">
+          <div>
+            <h2 className="text-3xl font-bold mb-2 text-yellow-600">Only GSAP Examples</h2>
+            <p className="text-gray-600 mb-8">Powered by GreenSock Animation Platform (GSAP)</p>
+            
+            <div className="space-y-12">
+              <div className="bg-white rounded-xl p-8 shadow-lg">
+                <h3 className="text-2xl font-semibold mb-6">GSAP Basics</h3>
+                <GsapBasics />
+              </div>
+
+              <div className="bg-white rounded-xl p-8 shadow-lg">
+                <h3 className="text-2xl font-semibold mb-6">GSAP ScrollTrigger</h3>
+                <GsapScrollTrigger />
+              </div>
+
+              <div className="bg-white rounded-xl p-8 shadow-lg">
+                <h3 className="text-2xl font-semibold mb-6">GSAP Timeline</h3>
+                <GsapTimeline />
+              </div>
+            </div>
+          </div>
+        </section>
+      );
+    }
+
     return sections;
   };
 
   return (
-    <AnimationProvider>
-      <main className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
-        <AnimationSwitcher
-          activeCategory={activeCategory}
-          onCategoryChange={setActiveCategory}
-        />
+    <main className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
+      <AnimationSwitcher
+        activeCategory={activeCategory}
+        onCategoryChange={setActiveCategory}
+      />
 
-        <div className="max-w-7xl mx-auto px-4 py-12">
-          <header className="text-center mb-16 animate-fadeIn">
-            <h1 className="text-5xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
-              Easy Tailwind Animations
-            </h1>
-            <p className="text-xl text-gray-600">
-              A complete animation playground built with Next.js & Tailwind CSS
-            </p>
-          </header>
+      <div className="max-w-7xl mx-auto px-4 py-12">
+        <header className="text-center mb-16 animate-fadeIn">
+          <h1 className="text-5xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+            Easy Tailwind Animations
+          </h1>
+          <p className="text-xl text-gray-600">
+            A complete animation playground built with Next.js & Tailwind CSS
+          </p>
+        </header>
 
-          <div className="space-y-24">
-            {renderAnimations()}
-          </div>
-
-          <footer className="mt-24 text-center text-gray-600 py-8 border-t border-gray-200">
-            <p>Built with Next.js, Tailwind CSS, and lots of animations! 🎨</p>
-          </footer>
+        <div className="space-y-24">
+          {renderAnimations()}
         </div>
-      </main>
-    </AnimationProvider>
+
+        <footer className="mt-24 text-center text-gray-600 py-8 border-t border-gray-200">
+          <p>Built with Next.js, Tailwind CSS, and lots of animations! 🎨</p>
+        </footer>
+      </div>
+    </main>
   );
 };
+
+const Home = () => (
+  <AnimationProvider>
+    <HomeContent />
+  </AnimationProvider>
+);
 
 export default Home;
