@@ -1,8 +1,7 @@
 'use client';
 
 // Button press feedback animations - active state animations
-export default function ButtonPress() {
-  return (
+const ButtonPress = () => (
     <div className="space-y-8">
       <div>
         <h3 className="text-xl font-semibold mb-4">Press Scale</h3>
@@ -44,4 +43,5 @@ export default function ButtonPress() {
       </div>
     </div>
   );
-}
+
+export default ButtonPress;

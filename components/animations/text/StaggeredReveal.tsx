@@ -1,7 +1,7 @@
 'use client';
 
 // Staggered letter reveal - letters appear one after another
-export default function StaggeredReveal() {
+const StaggeredReveal = () => {
   const text = 'STAGGERED';
   const letters = text.split('');
 
@@ -71,4 +71,6 @@ export default function StaggeredReveal() {
       </div>
     </div>
   );
-}
+};
+
+export default StaggeredReveal;

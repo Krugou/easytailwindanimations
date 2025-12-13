@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 
 // Parallax scrolling effect - elements move at different speeds
-export default function ParallaxSections() {
+const ParallaxSections = () => {
   const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
@@ -66,4 +66,6 @@ export default function ParallaxSections() {
       </div>
     </div>
   );
-}
+};
+
+export default ParallaxSections;

@@ -26,7 +26,7 @@ const categories: { id: AnimationCategory; label: string }[] = [
   { id: 'wild', label: 'Wild' },
 ];
 
-export default function AnimationSwitcher({ activeCategory, onCategoryChange }: AnimationSwitcherProps) {
+const AnimationSwitcher = ({ activeCategory, onCategoryChange }: AnimationSwitcherProps) => {
   const { speed, setSpeed, enabled, setEnabled } = useAnimation();
 
   return (
@@ -82,4 +82,6 @@ export default function AnimationSwitcher({ activeCategory, onCategoryChange }: 
       </div>
     </div>
   );
-}
+};
+
+export default AnimationSwitcher;

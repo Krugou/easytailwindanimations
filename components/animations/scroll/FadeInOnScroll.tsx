@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 
 // Fade in elements as they scroll into view using IntersectionObserver
-export default function FadeInOnScroll() {
+const FadeInOnScroll = () => {
   const [visibleElements, setVisibleElements] = useState<Set<number>>(new Set());
   const elementsRef = useRef<(HTMLDivElement | null)[]>([]);
 
@@ -52,4 +52,6 @@ export default function FadeInOnScroll() {
       ))}
     </div>
   );
-}
+};
+
+export default FadeInOnScroll;

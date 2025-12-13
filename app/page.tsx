@@ -43,7 +43,7 @@ import CursorEffects from '@/components/animations/wild/CursorEffects';
 import PhysicsAnimations from '@/components/animations/wild/PhysicsAnimations';
 import ChaosMode from '@/components/animations/wild/ChaosMode';
 
-export default function Home() {
+const Home = () => {
   const [activeCategory, setActiveCategory] = useState<AnimationCategory>('all');
 
   const renderAnimations = () => {
@@ -294,4 +294,6 @@ export default function Home() {
       </main>
     </AnimationProvider>
   );
-}
+};
+
+export default Home;

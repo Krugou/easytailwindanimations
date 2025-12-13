@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 
 // Scroll progress indicators
-export default function ScrollProgress() {
+const ScrollProgress = () => {
   const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
@@ -89,4 +89,6 @@ export default function ScrollProgress() {
       </div>
     </div>
   );
-}
+};
+
+export default ScrollProgress;

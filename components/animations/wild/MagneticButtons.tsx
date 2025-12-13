@@ -3,7 +3,7 @@
 import { useState, useRef } from 'react';
 
 // Magnetic button that follows cursor
-export default function MagneticButtons() {
+const MagneticButtons = () => {
   const [position1, setPosition1] = useState({ x: 0, y: 0 });
   const [position2, setPosition2] = useState({ x: 0, y: 0 });
   const button1Ref = useRef<HTMLButtonElement>(null);
@@ -67,4 +67,6 @@ export default function MagneticButtons() {
       </div>
     </div>
   );
-}
+};
+
+export default MagneticButtons;

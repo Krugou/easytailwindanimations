@@ -3,7 +3,7 @@
 import { useState } from 'react';
 
 // Chaos mode - multiple crazy animations together
-export default function ChaosMode() {
+const ChaosMode = () => {
   const [chaosEnabled, setChaosEnabled] = useState(false);
   const [shaking, setShaking] = useState(false);
   const [tooHard, setTooHard] = useState(false);
@@ -124,4 +124,6 @@ export default function ChaosMode() {
       `}</style>
     </div>
   );
-}
+};
+
+export default ChaosMode;

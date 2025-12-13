@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 
 // Cursor-reactive background and elements
-export default function CursorEffects() {
+const CursorEffects = () => {
   const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -83,4 +83,6 @@ export default function CursorEffects() {
       </div>
     </div>
   );
-}
+};
+
+export default CursorEffects;

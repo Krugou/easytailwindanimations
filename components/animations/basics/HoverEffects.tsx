@@ -1,8 +1,7 @@
 'use client';
 
 // Hover effect animations - simple hover state changes
-export default function HoverEffects() {
-  return (
+const HoverEffects = () => (
     <div className="space-y-8">
       <div>
         <h3 className="text-xl font-semibold mb-4">Hover Scale</h3>
@@ -71,4 +70,5 @@ export default function HoverEffects() {
       </div>
     </div>
   );
-}
+
+export default HoverEffects;

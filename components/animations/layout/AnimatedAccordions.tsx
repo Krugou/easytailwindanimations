@@ -3,7 +3,7 @@
 import { useState } from 'react';
 
 // Animated accordion components
-export default function AnimatedAccordions() {
+const AnimatedAccordions = () => {
   const [openItems, setOpenItems] = useState<Set<number>>(new Set([0]));
 
   const items = [
@@ -97,4 +97,6 @@ export default function AnimatedAccordions() {
       </div>
     </div>
   );
-}
+};
+
+export default AnimatedAccordions;

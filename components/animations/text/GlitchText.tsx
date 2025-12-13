@@ -1,8 +1,7 @@
 'use client';
 
 // Glitch text effect - text appears to glitch/distort
-export default function GlitchText() {
-  return (
+const GlitchText = () => (
     <div className="space-y-8">
       <div>
         <h3 className="text-xl font-semibold mb-4">Glitch Animation</h3>
@@ -46,4 +45,5 @@ export default function GlitchText() {
       </div>
     </div>
   );
-}
+
+export default GlitchText;

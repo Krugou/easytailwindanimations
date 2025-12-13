@@ -1,8 +1,7 @@
 'use client';
 
 // Various spinner/loading animations
-export default function Spinners() {
-  return (
+const Spinners = () => (
     <div className="space-y-8">
       <div>
         <h3 className="text-xl font-semibold mb-4">Basic Spinners</h3>
@@ -77,4 +76,5 @@ export default function Spinners() {
       </div>
     </div>
   );
-}
+
+export default Spinners;
