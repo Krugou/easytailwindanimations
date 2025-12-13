@@ -1,8 +1,7 @@
 'use client';
 
 // Scale and rotate animations
-export default function ScaleRotate() {
-  return (
+const ScaleRotate = () => (
     <div className="space-y-8">
       <div>
         <h3 className="text-xl font-semibold mb-4">Scale Animations</h3>
@@ -57,4 +56,5 @@ export default function ScaleRotate() {
       </div>
     </div>
   );
-}
+
+export default ScaleRotate;

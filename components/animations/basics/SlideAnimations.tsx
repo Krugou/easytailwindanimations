@@ -1,8 +1,7 @@
 'use client';
 
 // Slide animations from different directions
-export default function SlideAnimations() {
-  return (
+const SlideAnimations = () => (
     <div className="space-y-8">
       <div>
         <h3 className="text-xl font-semibold mb-4">Slide In Animations</h3>
@@ -59,4 +58,5 @@ export default function SlideAnimations() {
       </div>
     </div>
   );
-}
+
+export default SlideAnimations;

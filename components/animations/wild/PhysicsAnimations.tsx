@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 
 // Physics-like bouncing elements using requestAnimationFrame
-export default function PhysicsAnimations() {
+const PhysicsAnimations = () => {
   const [balls, setBalls] = useState<Array<{ x: number; y: number; vx: number; vy: number }>>([]);
   const containerRef = useRef<HTMLDivElement>(null);
   const animationRef = useRef<number | undefined>(undefined);
@@ -131,4 +131,6 @@ export default function PhysicsAnimations() {
       `}</style>
     </div>
   );
-}
+};
+
+export default PhysicsAnimations;

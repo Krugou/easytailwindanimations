@@ -1,8 +1,7 @@
 'use client';
 
 // Skeleton loading placeholders
-export default function SkeletonLoaders() {
-  return (
+const SkeletonLoaders = () => (
     <div className="space-y-8">
       <div>
         <h3 className="text-xl font-semibold mb-4">Card Skeleton</h3>
@@ -69,4 +68,5 @@ export default function SkeletonLoaders() {
       `}</style>
     </div>
   );
-}
+
+export default SkeletonLoaders;

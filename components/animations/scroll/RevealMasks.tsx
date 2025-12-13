@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 
 // Reveal mask animations - content is revealed as you scroll
-export default function RevealMasks() {
+const RevealMasks = () => {
   const [visibleSections, setVisibleSections] = useState<Set<number>>(new Set());
   const sectionsRef = useRef<(HTMLDivElement | null)[]>([]);
 
@@ -136,4 +136,6 @@ export default function RevealMasks() {
       </div>
     </div>
   );
-}
+};
+
+export default RevealMasks;

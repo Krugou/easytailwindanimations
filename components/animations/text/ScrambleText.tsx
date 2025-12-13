@@ -3,7 +3,7 @@
 import { useState } from 'react';
 
 // Scramble text on hover - letters randomize then settle
-export default function ScrambleText() {
+const ScrambleText = () => {
   const [scrambling, setScrambling] = useState(false);
   const [displayText, setDisplayText] = useState('SCRAMBLE');
   const originalText = 'SCRAMBLE';
@@ -87,4 +87,6 @@ export default function ScrambleText() {
       </div>
     </div>
   );
-}
+};
+
+export default ScrambleText;

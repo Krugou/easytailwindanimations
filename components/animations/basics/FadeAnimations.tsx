@@ -3,7 +3,7 @@
 import { useState } from 'react';
 
 // Fade in/out animations
-export default function FadeAnimations() {
+const FadeAnimations = () => {
   const [showFade, setShowFade] = useState(true);
 
   return (
@@ -50,4 +50,6 @@ export default function FadeAnimations() {
       </div>
     </div>
   );
-}
+};
+
+export default FadeAnimations;

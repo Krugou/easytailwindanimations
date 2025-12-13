@@ -3,7 +3,7 @@
 import { useState } from 'react';
 
 // Expanding card animations
-export default function ExpandingCards() {
+const ExpandingCards = () => {
   const [expandedCard, setExpandedCard] = useState<number | null>(null);
 
   const cards = [
@@ -81,4 +81,6 @@ export default function ExpandingCards() {
       </div>
     </div>
   );
-}
+};
+
+export default ExpandingCards;

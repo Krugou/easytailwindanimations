@@ -13,7 +13,7 @@ interface AnimationContextType {
 
 const AnimationContext = createContext<AnimationContextType | undefined>(undefined);
 
-export function AnimationProvider({ children }: { children: ReactNode }) {
+export const AnimationProvider = ({ children }: { children: ReactNode }) => {
   const [speed, setSpeed] = useState<AnimationSpeed>('normal');
   const [enabled, setEnabled] = useState(true);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
@@ -49,12 +49,12 @@ export function AnimationProvider({ children }: { children: ReactNode }) {
       {children}
     </AnimationContext.Provider>
   );
-}
+};
 
-export function useAnimation() {
+export const useAnimation = () => {
   const context = useContext(AnimationContext);
   if (context === undefined) {
     throw new Error('useAnimation must be used within an AnimationProvider');
   }
   return context;
-}
+};

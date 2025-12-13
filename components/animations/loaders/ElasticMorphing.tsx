@@ -1,8 +1,7 @@
 'use client';
 
 // Elastic and morphing loader animations
-export default function ElasticMorphing() {
-  return (
+const ElasticMorphing = () => (
     <div className="space-y-8">
       <div>
         <h3 className="text-xl font-semibold mb-4">Elastic Bounce</h3>
@@ -103,4 +102,5 @@ export default function ElasticMorphing() {
       `}</style>
     </div>
   );
-}
+
+export default ElasticMorphing;

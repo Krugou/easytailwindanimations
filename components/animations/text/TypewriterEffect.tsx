@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 
 // Typewriter effect - characters appear one by one
-export default function TypewriterEffect() {
+const TypewriterEffect = () => {
   const [text, setText] = useState('');
   const fullText = 'This is a typewriter effect animation!';
 
@@ -54,4 +54,6 @@ export default function TypewriterEffect() {
       </div>
     </div>
   );
-}
+};
+
+export default TypewriterEffect;

@@ -1,7 +1,7 @@
 'use client';
 
 // Wave text - letters move up and down in a wave pattern
-export default function WaveText() {
+const WaveText = () => {
   const text = 'WAVE TEXT';
   const letters = text.split('');
 
@@ -53,4 +53,6 @@ export default function WaveText() {
       </div>
     </div>
   );
-}
+};
+
+export default WaveText;

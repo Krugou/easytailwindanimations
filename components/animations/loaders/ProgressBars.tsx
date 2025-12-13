@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 
 // Progress bar animations
-export default function ProgressBars() {
+const ProgressBars = () => {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
@@ -101,4 +101,6 @@ export default function ProgressBars() {
       `}</style>
     </div>
   );
-}
+};
+
+export default ProgressBars;

@@ -3,7 +3,7 @@
 import { useState } from 'react';
 
 // Animated modal/dialog animations
-export default function AnimatedModals() {
+const AnimatedModals = () => {
   const [modal1, setModal1] = useState(false);
   const [modal2, setModal2] = useState(false);
   const [modal3, setModal3] = useState(false);
@@ -104,4 +104,6 @@ export default function AnimatedModals() {
       </div>
     </div>
   );
-}
+};
+
+export default AnimatedModals;

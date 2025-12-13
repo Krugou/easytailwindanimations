@@ -3,7 +3,7 @@
 import { useState } from 'react';
 
 // Micro-interactions - small, delightful animations
-export default function MicroInteractions() {
+const MicroInteractions = () => {
   const [liked, setLiked] = useState(false);
   const [bookmarked, setBookmarked] = useState(false);
   const [checked, setChecked] = useState(false);
@@ -95,4 +95,6 @@ export default function MicroInteractions() {
       </div>
     </div>
   );
-}
+};
+
+export default MicroInteractions;
