@@ -4,6 +4,49 @@ import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { useAnimationEngine } from '@/utils/useAnimationEngine';
 
+// Separate component for staggered boxes to manage animations properly
+const StaggeredBoxes = () => {
+  const boxRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    const animations: gsap.core.Tween[] = [];
+    
+    boxRefs.current.forEach((el, i) => {
+      if (el) {
+        const tween = gsap.fromTo(
+          el,
+          { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 0.5, delay: i * 0.1, repeat: -1, yoyo: true }
+        );
+        animations.push(tween);
+      }
+    });
+
+    return () => {
+      animations.forEach(anim => anim.kill());
+    };
+  }, []);
+
+  return (
+    <div>
+      <h3 className="text-xl font-semibold mb-4">Stagger Animation</h3>
+      <div className="grid grid-cols-4 gap-4">
+        {[...Array(8)].map((_, i) => (
+          <div
+            key={i}
+            ref={(el) => {
+              boxRefs.current[i] = el;
+            }}
+            className="h-24 bg-gradient-to-br from-cyan-500 to-blue-500 rounded-lg flex items-center justify-center text-white font-bold text-xl"
+          >
+            {i + 1}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
 const GsapTimeline = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const box1Ref = useRef<HTMLDivElement>(null);
@@ -102,28 +145,7 @@ const GsapTimeline = () => {
         </div>
       </div>
 
-      <div>
-        <h3 className="text-xl font-semibold mb-4">Stagger Animation</h3>
-        <div className="grid grid-cols-4 gap-4">
-          {[...Array(8)].map((_, i) => (
-            <div
-              key={i}
-              ref={(el) => {
-                if (el) {
-                  gsap.fromTo(
-                    el,
-                    { opacity: 0, y: 20 },
-                    { opacity: 1, y: 0, duration: 0.5, delay: i * 0.1, repeat: -1, yoyo: true }
-                  );
-                }
-              }}
-              className="h-24 bg-gradient-to-br from-cyan-500 to-blue-500 rounded-lg flex items-center justify-center text-white font-bold text-xl"
-            >
-              {i + 1}
-            </div>
-          ))}
-        </div>
-      </div>
+      <StaggeredBoxes />
     </div>
   );
 };

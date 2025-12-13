@@ -1,9 +1,9 @@
 'use client';
 
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import { AnimationPreset, getPresetConfig } from './presetConfig';
 
 type AnimationSpeed = 'slow' | 'normal' | 'fast';
-type AnimationPreset = 'calm' | 'energetic' | 'feral';
 
 interface AnimationContextType {
   speed: AnimationSpeed;
@@ -44,20 +44,9 @@ export const AnimationProvider = ({ children }: { children: ReactNode }) => {
 
   // Apply preset when it changes
   useEffect(() => {
-    switch (preset) {
-      case 'calm':
-        setSpeed('slow');
-        setChaos(0);
-        break;
-      case 'energetic':
-        setSpeed('normal');
-        setChaos(30);
-        break;
-      case 'feral':
-        setSpeed('fast');
-        setChaos(80);
-        break;
-    }
+    const config = getPresetConfig(preset);
+    setSpeed(config.speed);
+    setChaos(config.chaos);
   }, [preset]);
 
   useEffect(() => {

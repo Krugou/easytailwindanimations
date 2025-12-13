@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, RefObject } from 'react';
 import { useAnimation } from './AnimationContext';
+import { getPresetConfig as getSharedPresetConfig } from './presetConfig';
 
 interface AnimationOptions {
   threshold?: number;
@@ -82,34 +83,7 @@ export const useAnimationEngine = (
   /**
    * Get preset-based configuration
    */
-  const getPresetConfig = () => {
-    switch (preset) {
-      case 'calm':
-        return {
-          duration: 1.5,
-          easing: 'ease-in-out',
-          intensity: 0.5,
-        };
-      case 'energetic':
-        return {
-          duration: 0.8,
-          easing: 'ease-out',
-          intensity: 1,
-        };
-      case 'feral':
-        return {
-          duration: 0.3,
-          easing: 'cubic-bezier(0.68, -0.55, 0.265, 1.55)',
-          intensity: 1.5,
-        };
-      default:
-        return {
-          duration: 1,
-          easing: 'ease',
-          intensity: 1,
-        };
-    }
-  };
+  const getPresetConfig = () => getSharedPresetConfig(preset);
 
   return {
     chaos,

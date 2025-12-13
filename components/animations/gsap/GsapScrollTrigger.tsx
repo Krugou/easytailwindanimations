@@ -5,11 +5,6 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useAnimationEngine } from '@/utils/useAnimationEngine';
 
-// Register ScrollTrigger plugin
-if (typeof window !== 'undefined') {
-  gsap.registerPlugin(ScrollTrigger);
-}
-
 const GsapScrollTrigger = () => {
   const section1Ref = useRef<HTMLDivElement>(null);
   const section2Ref = useRef<HTMLDivElement>(null);
@@ -19,6 +14,11 @@ const GsapScrollTrigger = () => {
   const { getPresetConfig, getChaosAdjustedDuration } = useAnimationEngine(section1Ref);
 
   useEffect(() => {
+    // Register ScrollTrigger plugin on client side
+    if (typeof window !== 'undefined') {
+      gsap.registerPlugin(ScrollTrigger);
+    }
+
     const config = getPresetConfig();
     const duration = getChaosAdjustedDuration(config.duration);
 
