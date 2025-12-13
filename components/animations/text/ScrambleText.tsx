@@ -17,17 +17,17 @@ export default function ScrambleText() {
     const maxIterations = 20;
 
     const interval = setInterval(() => {
-      setDisplayText((prev) => {
-        return originalText
+      setDisplayText(() =>
+        originalText
           .split('')
-          .map((char, index) => {
+          .map((_char, index) => {
             if (index < iterations / 2) {
               return originalText[index];
             }
             return chars[Math.floor(Math.random() * chars.length)];
           })
-          .join('');
-      });
+          .join('')
+      );
 
       iterations++;
 
