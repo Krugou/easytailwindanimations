@@ -1,6 +1,7 @@
 'use client';
 
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import { AnimationPreset, getPresetConfig } from './presetConfig';
 
 type AnimationSpeed = 'slow' | 'normal' | 'fast';
 
@@ -9,6 +10,12 @@ interface AnimationContextType {
   setSpeed: (speed: AnimationSpeed) => void;
   enabled: boolean;
   setEnabled: (enabled: boolean) => void;
+  chaos: number; // 0-100 percentage
+  setChaos: (chaos: number) => void;
+  preset: AnimationPreset;
+  setPreset: (preset: AnimationPreset) => void;
+  gsapEnabled: boolean;
+  setGsapEnabled: (enabled: boolean) => void;
 }
 
 const AnimationContext = createContext<AnimationContextType | undefined>(undefined);
@@ -16,6 +23,9 @@ const AnimationContext = createContext<AnimationContextType | undefined>(undefin
 export const AnimationProvider = ({ children }: { children: ReactNode }) => {
   const [speed, setSpeed] = useState<AnimationSpeed>('normal');
   const [enabled, setEnabled] = useState(true);
+  const [chaos, setChaos] = useState(0);
+  const [preset, setPreset] = useState<AnimationPreset>('calm');
+  const [gsapEnabled, setGsapEnabled] = useState(false);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
   useEffect(() => {
@@ -32,6 +42,13 @@ export const AnimationProvider = ({ children }: { children: ReactNode }) => {
     return () => mediaQuery.removeEventListener('change', handleChange);
   }, []);
 
+  // Apply preset when it changes
+  useEffect(() => {
+    const config = getPresetConfig(preset);
+    setSpeed(config.speed);
+    setChaos(config.chaos);
+  }, [preset]);
+
   useEffect(() => {
     const root = document.documentElement;
     
@@ -42,10 +59,24 @@ export const AnimationProvider = ({ children }: { children: ReactNode }) => {
       root.classList.remove('animation-speed-slow', 'animation-speed-normal', 'animation-speed-fast');
       root.classList.add(`animation-speed-${speed}`);
     }
-  }, [speed, enabled, prefersReducedMotion]);
+
+    // Set chaos level CSS variable
+    root.style.setProperty('--chaos-level', (chaos / 100).toString());
+  }, [speed, enabled, prefersReducedMotion, chaos]);
 
   return (
-    <AnimationContext.Provider value={{ speed, setSpeed, enabled, setEnabled }}>
+    <AnimationContext.Provider value={{ 
+      speed, 
+      setSpeed, 
+      enabled, 
+      setEnabled,
+      chaos,
+      setChaos,
+      preset,
+      setPreset,
+      gsapEnabled,
+      setGsapEnabled
+    }}>
       {children}
     </AnimationContext.Provider>
   );
