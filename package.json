@@ -13,9 +13,13 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@theatre/core": "^0.7.2",
+    "@theatre/studio": "^0.7.2",
     "@types/node": "^25.0.1",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
+    "animejs": "^4.2.2",
+    "framer-motion": "^12.23.26",
     "gsap": "^3.12.5",
     "next": "^16.0.10",
     "react": "^19.2.3",

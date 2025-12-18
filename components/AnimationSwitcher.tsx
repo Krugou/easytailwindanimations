@@ -27,7 +27,16 @@ const categories: { id: AnimationCategory; label: string }[] = [
 ];
 
 const AnimationSwitcher = ({ activeCategory, onCategoryChange }: AnimationSwitcherProps) => {
-  const { speed, setSpeed, enabled, setEnabled, chaos, setChaos, preset, setPreset, gsapEnabled, setGsapEnabled } = useAnimation();
+  const { 
+    speed, setSpeed, 
+    enabled, setEnabled, 
+    chaos, setChaos, 
+    preset, setPreset, 
+    gsapEnabled, setGsapEnabled,
+    theatreEnabled, setTheatreEnabled,
+    animeEnabled, setAnimeEnabled,
+    framerEnabled, setFramerEnabled
+  } = useAnimation();
 
   return (
     <div className="sticky top-0 z-50 bg-gradient-to-r from-purple-600 to-blue-600 shadow-lg">
@@ -113,18 +122,52 @@ const AnimationSwitcher = ({ activeCategory, onCategoryChange }: AnimationSwitch
               />
             </div>
 
-            {/* GSAP Toggle */}
-            <div className="flex items-center gap-2">
-              <label className="text-white text-sm font-medium">GSAP:</label>
+            {/* Library Toggles */}
+            <div className="flex items-center gap-3">
+              <label className="text-white text-sm font-medium">Libraries:</label>
               <button
                 onClick={() => setGsapEnabled(!gsapEnabled)}
-                className={`px-3 py-1 rounded text-sm font-medium transition-colors ${
+                className={`px-2 py-1 rounded text-xs font-medium transition-colors ${
                   gsapEnabled
                     ? 'bg-yellow-500 text-white hover:bg-yellow-600'
-                    : 'bg-gray-500 text-white hover:bg-gray-600'
+                    : 'bg-gray-500/50 text-white hover:bg-gray-500'
                 }`}
+                title="Toggle GSAP examples"
               >
-                {gsapEnabled ? '✓ ON' : '✗ OFF'}
+                GSAP
+              </button>
+              <button
+                onClick={() => setTheatreEnabled(!theatreEnabled)}
+                className={`px-2 py-1 rounded text-xs font-medium transition-colors ${
+                  theatreEnabled
+                    ? 'bg-green-500 text-white hover:bg-green-600'
+                    : 'bg-gray-500/50 text-white hover:bg-gray-500'
+                }`}
+                title="Toggle Theatre.js examples"
+              >
+                Theatre
+              </button>
+              <button
+                onClick={() => setAnimeEnabled(!animeEnabled)}
+                className={`px-2 py-1 rounded text-xs font-medium transition-colors ${
+                  animeEnabled
+                    ? 'bg-blue-500 text-white hover:bg-blue-600'
+                    : 'bg-gray-500/50 text-white hover:bg-gray-500'
+                }`}
+                title="Toggle Anime.js examples"
+              >
+                Anime
+              </button>
+              <button
+                onClick={() => setFramerEnabled(!framerEnabled)}
+                className={`px-2 py-1 rounded text-xs font-medium transition-colors ${
+                  framerEnabled
+                    ? 'bg-purple-500 text-white hover:bg-purple-600'
+                    : 'bg-gray-500/50 text-white hover:bg-gray-500'
+                }`}
+                title="Toggle Framer Motion examples"
+              >
+                Framer
               </button>
             </div>
           </div>
