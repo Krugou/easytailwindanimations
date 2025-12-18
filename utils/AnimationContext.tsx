@@ -16,6 +16,12 @@ interface AnimationContextType {
   setPreset: (preset: AnimationPreset) => void;
   gsapEnabled: boolean;
   setGsapEnabled: (enabled: boolean) => void;
+  theatreEnabled: boolean;
+  setTheatreEnabled: (enabled: boolean) => void;
+  animeEnabled: boolean;
+  setAnimeEnabled: (enabled: boolean) => void;
+  framerEnabled: boolean;
+  setFramerEnabled: (enabled: boolean) => void;
 }
 
 const AnimationContext = createContext<AnimationContextType | undefined>(undefined);
@@ -26,6 +32,9 @@ export const AnimationProvider = ({ children }: { children: ReactNode }) => {
   const [chaos, setChaos] = useState(0);
   const [preset, setPreset] = useState<AnimationPreset>('calm');
   const [gsapEnabled, setGsapEnabled] = useState(false);
+  const [theatreEnabled, setTheatreEnabled] = useState(false);
+  const [animeEnabled, setAnimeEnabled] = useState(false);
+  const [framerEnabled, setFramerEnabled] = useState(false);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
   useEffect(() => {
@@ -75,7 +84,13 @@ export const AnimationProvider = ({ children }: { children: ReactNode }) => {
       preset,
       setPreset,
       gsapEnabled,
-      setGsapEnabled
+      setGsapEnabled,
+      theatreEnabled,
+      setTheatreEnabled,
+      animeEnabled,
+      setAnimeEnabled,
+      framerEnabled,
+      setFramerEnabled
     }}>
       {children}
     </AnimationContext.Provider>
